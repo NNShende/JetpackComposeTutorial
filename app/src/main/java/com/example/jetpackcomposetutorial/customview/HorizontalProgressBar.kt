@@ -1,4 +1,4 @@
-package com.example.jetpackcomposetutorial.view
+package com.example.jetpackcomposetutorial.customview
 
 import android.content.Context
 import android.graphics.Canvas

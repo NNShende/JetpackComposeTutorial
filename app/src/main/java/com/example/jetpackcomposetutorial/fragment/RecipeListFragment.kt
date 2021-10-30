@@ -1,4 +1,4 @@
-package com.example.jetpackcomposetutorial
+package com.example.jetpackcomposetutorial.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.fragment.app.Fragment
-import com.example.jetpackcomposetutorial.view.HorizontalDottedProgress
+import com.example.jetpackcomposetutorial.customview.HorizontalDottedProgress
 
 class RecipeListFragment : Fragment() {
     override fun onCreateView(
