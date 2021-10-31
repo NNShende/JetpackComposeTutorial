@@ -1,4 +1,4 @@
-package com.example.jetpackcomposetutorial.ui.fragments
+package com.example.jetpackcomposetutorial.presentation.ui.recipe_list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,7 +17,9 @@ import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.jetpackcomposetutorial.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RecipeListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,

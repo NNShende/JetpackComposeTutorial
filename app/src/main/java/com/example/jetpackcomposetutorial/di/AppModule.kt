@@ -1,7 +1,7 @@
 package com.example.jetpackcomposetutorial.di
 
 import android.content.Context
-import com.example.jetpackcomposetutorial.BaseApplication
+import com.example.jetpackcomposetutorial.presentation.ui.BaseApplication
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

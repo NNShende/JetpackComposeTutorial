@@ -1,4 +1,4 @@
-package com.example.jetpackcomposetutorial.ui.activities
+package com.example.jetpackcomposetutorial.presentation.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
