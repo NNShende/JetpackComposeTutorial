@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.compose.foundation.ScrollableRow
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -44,7 +45,9 @@ class RecipeListFragment: Fragment() {
 
                 val query = viewModel.query.value
 
-                Column() {
+                val selectedCategory = viewModel.selectedCategory.value
+
+                Column {
                     Surface(
                         elevation = 8.dp,
                         color = Color.White,
@@ -76,7 +79,7 @@ class RecipeListFragment: Fragment() {
                                     },
                                     onImeActionPerformed = { action, softKeyboardController ->
                                         if (action == ImeAction.Search) {
-                                            viewModel.newSearch(query)
+                                            viewModel.newSearch()
                                             softKeyboardController?.hideSoftwareKeyboard()
                                         }
                                     },
@@ -88,16 +91,22 @@ class RecipeListFragment: Fragment() {
                             }
 
                             // Search Chips
+                            val scrollState = rememberScrollState()
                             ScrollableRow(
                                 modifier = Modifier
                                     .fillMaxWidth()
+                                    .padding(8.dp),
+                                scrollState = scrollState,
                             ) {
+                                scrollState.scrollTo(viewModel.categoryScrollPosition)
                                 for(category in getAllFoodCategories()) {
                                     FoodCategoryChip(
                                         category = category.value,
-                                        onExecuteSearch = {
-                                            viewModel.onQueryChanged(it)
-                                            viewModel.newSearch(it)
+                                        isSelected = selectedCategory == category,
+                                        onExecuteSearch = viewModel::newSearch,
+                                        onSelectedCategoryChanged = {
+                                            viewModel.onChangeCategoryScrollPosition(scrollState.value)
+                                            viewModel.onSelectedCategoryChanged(it)
                                         }
                                     )
                                 }

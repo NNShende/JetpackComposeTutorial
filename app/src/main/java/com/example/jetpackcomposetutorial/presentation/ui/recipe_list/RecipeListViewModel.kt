@@ -17,20 +17,24 @@ constructor(
     @Named("auth_token") private val token: String
 ): ViewModel() {
 
+    val selectedCategory: MutableState<FoodCategory?> = mutableStateOf(null)
+
     val recipes: MutableState<List<Recipe>> = mutableStateOf(ArrayList())
 
     val query = mutableStateOf("")
 
+    var categoryScrollPosition = 0f
+
     init {
-        newSearch("Chicken")
+        newSearch()
     }
 
-    fun newSearch(query: String) {
+    fun newSearch() {
         viewModelScope.launch {
             val result = repository.search(
                 token = token,
                 page = 1,
-                query = query
+                query = query.value
             )
             recipes.value = result
         }
@@ -38,6 +42,15 @@ constructor(
 
     fun onQueryChanged(newQuery: String) {
         query.value = newQuery
+    }
+
+    fun onSelectedCategoryChanged(category: String) {
+        selectedCategory.value = getFoodCategory(category)
+        onQueryChanged(category)
+    }
+
+    fun onChangeCategoryScrollPosition(position: Float) {
+        categoryScrollPosition = position
     }
 
 }
