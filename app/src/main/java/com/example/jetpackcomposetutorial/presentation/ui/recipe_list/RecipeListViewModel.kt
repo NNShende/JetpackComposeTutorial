@@ -14,12 +14,16 @@ class RecipeListViewModel
 @ViewModelInject
 constructor(
     private val repository: RecipeRepository,
-    private @Named("auth_token") val token: String
+    @Named("auth_token") private val token: String
 ): ViewModel() {
 
-    val recipes: MutableState<List<Recipe>> = mutableStateOf(emptyList())
+    val recipes: MutableState<List<Recipe>> = mutableStateOf(ArrayList())
 
     init {
+        newSearch()
+    }
+
+    private fun newSearch() {
         viewModelScope.launch {
             val result = repository.search(
                 token = token,
