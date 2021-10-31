@@ -8,5 +8,5 @@ data class RecipeSearchResponse(
     var count: Int? = null,
 
     @SerializedName("results")
-    var results: List<RecipeDto> = emptyList()
+    var recipes: List<RecipeDto> = emptyList()
 )
