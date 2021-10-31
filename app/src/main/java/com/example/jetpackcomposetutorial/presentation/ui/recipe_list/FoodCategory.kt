@@ -6,7 +6,7 @@ enum class FoodCategory(val value: String) {
     SOUP("Soup"),
     DESSERT("Dessert"),
     VEGETARIAN("Vegetarian"),
-    MILK("Milk>"),
+    MILK("Milk"),
     VEGAN("Vegan"),
     PIZZA("Pizza"),
     DONUT("Donut"),
