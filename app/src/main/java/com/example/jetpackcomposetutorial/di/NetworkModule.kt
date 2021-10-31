@@ -1,5 +1,6 @@
 package com.example.jetpackcomposetutorial.di
 
+import com.example.jetpackcomposetutorial.R
 import com.example.jetpackcomposetutorial.network.model.RecipeDtoMapper
 import com.example.jetpackcomposetutorial.network.services.RecipeService
 import com.google.gson.GsonBuilder
