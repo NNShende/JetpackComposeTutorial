@@ -1,4 +1,4 @@
-package com.example.jetpackcomposetutorial.activity
+package com.example.jetpackcomposetutorial.ui.activity
 
 import android.os.Bundle
 import android.util.Log
