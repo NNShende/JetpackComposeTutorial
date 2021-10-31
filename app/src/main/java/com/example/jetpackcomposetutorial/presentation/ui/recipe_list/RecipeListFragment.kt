@@ -1,6 +1,7 @@
 package com.example.jetpackcomposetutorial.presentation.ui.recipe_list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.jetpackcomposetutorial.R
+import com.example.jetpackcomposetutorial.util.TAG
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,6 +34,12 @@ class RecipeListFragment : Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
+                val recipes = viewModel.recipes.value
+
+                for(recipe in recipes) {
+                    Log.d(TAG, "onCreateView: ${recipe.title}")
+                }
+
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
                         text = "Recipe List",
